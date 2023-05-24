@@ -1,5 +1,6 @@
 package project_arte.vo;
 
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -24,12 +25,13 @@ public class Reservation {
 	private boolean noticeCheck;	// 유의사항 확인 여부
 	
 	private String resNum;	// 예약번호
+	private Date resTime;
 	
 	// 생성자
 	public Reservation() {}
-	
-	public Reservation(Member member, Museum museum, String resName, String resPhone, int totCnt,
-			int totPrice, boolean personalCheck, boolean noticeCheck) {
+
+	public Reservation(Member member, Museum museum, String resName, String resPhone, int totCnt, int totPrice,
+			boolean personalCheck, boolean noticeCheck, String resNum, Date resTime) {
 		this.member = member;
 		this.museum = museum;
 		this.resName = resName;
@@ -38,8 +40,10 @@ public class Reservation {
 		this.totPrice = totPrice;
 		this.personalCheck = personalCheck;
 		this.noticeCheck = noticeCheck;
+		this.resNum = resNum;
+		this.resTime = resTime;
 	}
-
+	
 	// 사용자 정의 메서드
 	public void reservate() {	// 예약 메소드
 		inputVisitor();		// 방문자 정보 입력 메서드
@@ -210,4 +214,13 @@ public class Reservation {
 	public void setResNum(String resNum) {
 		this.resNum = resNum;
 	}
+
+	public Date getResTime() {
+		return resTime;
+	}
+
+	public void setResTime(Date resTime) {
+		this.resTime = resTime;
+	}
+	
 }

@@ -5,6 +5,9 @@
 				+ "totCnt, totPrice, resTime 
  */
 SELECT * FROM reservations;
+
+DELETE FROM RESERVATIONS WHERE MEMID = 'sh1n';
+
 CREATE TABLE reservations (
 	resNum VARCHAR2(50),
 	loc VARCHAR2(50),
