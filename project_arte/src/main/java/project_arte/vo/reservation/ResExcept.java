@@ -1,6 +1,6 @@
-package project_arte.vo;
+package project_arte.vo.reservation;
 
-public class Except extends Exception {
+public class ResExcept extends Exception {
 
 }
 class PersonalExp extends Exception{		// 개인정보 이용 약관에 동의하지 않으면 발생하는 예외

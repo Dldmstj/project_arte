@@ -1,4 +1,4 @@
-package project_arte.vo;
+package project_arte.vo.reservation;
 
 public class Museum {
 	// 필드: 지점명, 날짜
@@ -39,6 +39,13 @@ public class Museum {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
+	@Override
+	   public String toString() {
+	      String museumInfo = 
+	            "예약된 지점명: " + loc +
+	            "\n예약된 날짜: " + date;
+	      return museumInfo;
+	   }
+
 	
 }

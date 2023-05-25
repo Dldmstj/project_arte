@@ -1,8 +1,12 @@
-package project_arte.vo;
+package project_arte.vo.reservation;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
+
+import project_arte.dao.ReservationDao;
 
 public class Reservation {
 	// 필드 : 예약자정보(아이디, 이름, 연락처, 이메일) 방문자 연락처, 인원, 나이, (지점명, 날짜), 입장료
@@ -17,9 +21,9 @@ public class Reservation {
 	private int totPrice;		// 입장료 총 금액
 	
 	// 입장료
-	private final int childPrice = 10000;
-	private final int teenPrice = 13000;
-	private final int adultPrice = 17000;
+	static final int childPrice = 10000;
+	static final int teenPrice = 13000;
+	static final int adultPrice = 17000;
 	
 	private boolean personalCheck;	// 개인정보 이용동의
 	private boolean noticeCheck;	// 유의사항 확인 여부
@@ -117,9 +121,9 @@ public class Reservation {
 	public void makeResNum() {		// 랜덤 번호 생성으로 예약번호 랜덤 생성
 		char[] arr = new char[10];
 		for(int idx=0; idx<arr.length; idx++) {
-			int ranNum = (int)(Math.random() * 62 + 48);	// ranNum 48~116
-			if(ranNum>57)	ranNum +=7;	// 49~57, 58~64 => A
-			if(ranNum>90)	ranNum +=6;	// 49~57, 58~64 => A
+			int ranNum = (int)(Math.random() * 62 + 48);
+			if(ranNum>57)	ranNum +=7;
+			if(ranNum>90)	ranNum +=6;
 			arr[idx] = (char)ranNum;
 		}
 		String resNum = new String(arr);
@@ -138,25 +142,18 @@ public class Reservation {
 			}
 	}
 	
-	public void showResInfo() {		// 예약 정보 출력
-		System.out.println();
-		System.out.println("--------- 예약 정보 ---------");
-		System.out.println("예약번호: "+ resNum);
-		System.out.println("예약된 지점명: "+ museum.getLoc());
-		System.out.println("예약된 날짜명: "+ museum.getDate());
-		System.out.println("----예약자 정보----");
-		System.out.println("예약자아이디: "+member.getMemberID());
-		System.out.println("예약자명: "+member.getMemName());
-		System.out.println("예약자연락처: "+member.getMemPhone());
-		System.out.println("예약자이메일: "+member.getMemEmail());
-		System.out.println("----방문자 정보----");
-		System.out.println("방문자 이름: "+resName);
-		System.out.println("방문자 연락처: "+resPhone);
-		System.out.println("방문할 총 인원 수: "+totCnt);
-		System.out.println("개인정보 이용 동의 여부: "+personalCheck);
-		System.out.println("유의사항 확인 여부: "+noticeCheck);
-		System.out.println("총 결제 금액: "+totPrice+"원");
-	}
+	   public void showResInfo() {      // 예약 정보 출력
+		      System.out.println();
+		      System.out.println("--------- 예약 정보 ---------");
+		      System.out.println("예약번호: "+ resNum);
+		      System.out.println(museum.toString());
+		      System.out.println("----예약자 정보----");
+		      System.out.println(member.toString());
+		      System.out.println("----방문자 정보----");
+		      System.out.println(toString());
+		      
+		   }
+
 
 	// getter, setter
 	public Member getMember() {
@@ -222,5 +219,16 @@ public class Reservation {
 	public void setResTime(Date resTime) {
 		this.resTime = resTime;
 	}
-	
+	@Override
+	   public String toString() {
+	      String visitorInfo = 
+	            "방문자 이름: " + resName + 
+	            "\n방문자 연락처: " + resPhone +
+	            "\n방문할 총 인원: " + totCnt +
+	            "\n개인정보 이용 동의 여부: " + personalCheck +
+	            "\n유의사항 확인 여부: " + noticeCheck +
+	            "\n총 결제 금액: " + totPrice +"원";
+	      return visitorInfo;
+	  }
+
 }

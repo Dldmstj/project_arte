@@ -1,4 +1,4 @@
-package project_arte.vo;
+package project_arte.vo.reservation;
 
 public class Member {
 	// 필드: 아이디, 비밀번호, 이름, 연락처, ...
@@ -45,4 +45,16 @@ public class Member {
 	public void setMemEmail(String memEmail) {
 		this.memEmail = memEmail;
 	}
+
+	@Override
+	   public String toString() {
+	      String memberInfo = 
+	            "예약자 아이디: " + memberID +
+	            "\n예약자 이름: " + memName + 
+	            "\n예약자 연락처: " + memPhone +
+	            "\n예약자 이메일: " + memEmail;
+	      return memberInfo;
+	   }
+
+	
 }

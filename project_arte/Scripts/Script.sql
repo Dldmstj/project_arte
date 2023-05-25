@@ -6,13 +6,13 @@
  */
 SELECT * FROM reservations;
 
-DELETE FROM RESERVATIONS WHERE MEMID = 'sh1n';
+DELETE FROM RESERVATIONS WHERE RESNUM IS null;
 
 CREATE TABLE reservations (
-	resNum VARCHAR2(50),
-	loc VARCHAR2(50),
+	resNum VARCHAR2(50) PRIMARY KEY,
+	loc VARCHAR2(50) foreign key(deptno) references museums(musloc),
 	can_date VARCHAR2(30),
-	memId VARCHAR2(50),
+	memId VARCHAR2(50) foreign key(deptno) references members(memId),
 	memName VARCHAR2(50),
 	memPhone VARCHAR2(50),
 	memEmail VARCHAR2(50),

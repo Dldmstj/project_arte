@@ -1,28 +1,24 @@
 package project_arte.dao;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
-import project_arte.vo.Member;
-import project_arte.vo.Museum;
-import project_arte.vo.Reservation;
+import project_arte.vo.reservation.Member;
+import project_arte.vo.reservation.Museum;
+import project_arte.vo.reservation.Reservation;
 
 public class ReservationDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	
 	// 예약 진행 메서드
 	public void insertReservation(Member mem, Museum mus, Reservation res) {
 		int isInsert = 0;
-//		mem = res.getMember();
-//		mus = res.getMuseum();
 		String sql ="insert into reservations"
 				+ "(resNum,loc,can_date,memId,memName, "
 				+ "memPhone,memEmail,resName,resPhone,"
-				+ "totCnt, totPrice, resTime) values(?,?,to_date(?,'YYYY-MM-DD'),?,?,?,?,?,?,?,?,sysdate)";
+				+ "totCnt, totPrice, resTime) "
+				+ "values(?,?,to_date(?,'YYYY-MM-DD'),?,?,?,?,?,?,?,?,sysdate)";
 		try {
 			conn = DB.conn();
 			conn.setAutoCommit(false);
@@ -59,7 +55,6 @@ public class ReservationDao {
 			DB.close(rs, pstmt, conn);
 		}
 	}
-
 	
 
 }

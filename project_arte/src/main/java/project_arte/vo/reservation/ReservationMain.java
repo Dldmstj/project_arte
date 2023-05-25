@@ -1,4 +1,4 @@
-package project_arte.vo;
+package project_arte.vo.reservation;
 
 import java.util.HashMap;
 import java.util.Map;
