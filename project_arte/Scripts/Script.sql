@@ -10,9 +10,9 @@ DELETE FROM RESERVATIONS WHERE RESNUM IS null;
 
 CREATE TABLE reservations (
 	resNum VARCHAR2(50) PRIMARY KEY,
-	loc VARCHAR2(50) foreign key(deptno) references museums(musloc),
+	loc VARCHAR2(50),
 	can_date VARCHAR2(30),
-	memId VARCHAR2(50) foreign key(deptno) references members(memId),
+	memId VARCHAR2(50),
 	memName VARCHAR2(50),
 	memPhone VARCHAR2(50),
 	memEmail VARCHAR2(50),
