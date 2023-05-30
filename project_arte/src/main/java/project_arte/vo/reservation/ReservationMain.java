@@ -1,8 +1,5 @@
 package project_arte.vo.reservation;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import project_arte.dao.ReservationDao;
 
 public class ReservationMain {
@@ -14,10 +11,10 @@ public class ReservationMain {
 		Museum ms = new Museum("제주", "2023-05-14");			// 지점(Museum) 객체
 		rv.setMember(mem);
 		rv.setMuseum(ms);
-		rv.reservate();
+		rv.reservate(mem,ms,rv);
 		
-		ReservationDao rdao = new ReservationDao();
-		rdao.insertReservation(mem,ms,rv);
+//		ReservationDao rdao = new ReservationDao();
+//		rdao.insertReservation(mem,ms,rv);
 		
 		
 	}

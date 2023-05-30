@@ -49,12 +49,15 @@ public class Reservation {
 	}
 	
 	// 사용자 정의 메서드
-	public void reservate() {	// 예약 메소드
+	public void reservate(Member mem, Museum ms, Reservation rv) {	// 예약 메소드
 		inputVisitor();		// 방문자 정보 입력 메서드
 		System.out.println("총 입장료: " + totAmount() +"원");		// 총 입장료 계산
 		personalCheck();		// 개인정보 이용 동의 여부
 		noticeCheck();			// 유의사항 확인 여부
 		confirmRes();		// 예약 확정 여부
+		
+		ReservationDao rdao = new ReservationDao();
+		rdao.insertReservation(mem,ms,rv);
 	}
 	
 	public void inputVisitor() {	// 방문자 정보 입력
